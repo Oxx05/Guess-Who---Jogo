@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Mistura de Personagens</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- Menu Screen -->
+        <div id="menu" class="menu-screen">
+            <h1 class="game-title">Mistura de Personagens</h1>
+            <p class="game-subtitle">Descobre o personagem correto!</p>
+
+            <div class="menu-buttons">
+                <button class="menu-btn" data-mode="single">
+                    <span class="btn-icon">🎮</span>
+                    <div class="btn-content">
+                        <span class="btn-text">Single Player</span>
+                        <span class="btn-desc">Joga contra o relógio</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-mode="1v1">
+                    <span class="btn-icon">⚔️</span>
+                    <div class="btn-content">
+                        <span class="btn-text">1 vs 1</span>
+                        <span class="btn-desc">Desafia um amigo</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-mode="multiplayer">
+                    <span class="btn-icon">👥</span>
+                    <div class="btn-content">
+                        <span class="btn-text">Multiplayer</span>
+                        <span class="btn-desc">Joga com vários amigos</span>
+                    </div>
+                </button>
+            </div>
+
+            <div class="controls-info">
+                <h3>Controlos:</h3>
+                <div class="control-row">
+                    <strong>Player 1:</strong>
+                    <div class="keys">
+                        <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>Espaço</kbd>
+                    </div>
+                </div>
+                <div class="control-row">
+                    <strong>Player 2:</strong>
+                    <div class="keys">
+                        <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><kbd>Enter</kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game" class="game-screen hidden">
+            <!-- Header with scores -->
+            <div class="game-header">
+                <div class="score-container">
+                    <div class="player-score" id="score-p1">
+                        <span class="player-label">Player 1</span>
+                        <span class="score-value">0</span>
+                        <span class="streak" id="streak-p1"></span>
+                    </div>
+                    <div class="timer" id="timer">60</div>
+                    <div class="player-score" id="score-p2">
+                        <span class="player-label">Player 2</span>
+                        <span class="score-value">0</span>
+                        <span class="streak" id="streak-p2"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Displays (2 characters shown each round) -->
+            <div class="display-area">
+                <h2>Analise as Personagens:</h2>
+                <div class="character-displays">
+                    <div class="character-display" id="display-1">
+                        <div class="char-icon"></div>
+                        <div class="char-outfit"></div>
+                    </div>
+                    <div class="character-display" id="display-2">
+                        <div class="char-icon"></div>
+                        <div class="char-outfit"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selection Buttons (5 characters) -->
+            <div class="selection-area">
+                <h2>Selecione a Resposta:</h2>
+                <div class="character-buttons">
+                    <button class="char-btn" data-char="king" data-player="0">
+                        <div class="char-preview">
+                            <div class="preview-head king"></div>
+                            <div class="preview-body king"></div>
+                        </div>
+                        <div class="char-btn-name">Rei</div>
+                        <div class="char-keys">
+                            <kbd>W</kbd>
+                            <kbd>↑</kbd>
+                        </div>
+                    </button>
+                    <button class="char-btn" data-char="wolf" data-player="0">
+                        <div class="char-preview">
+                            <div class="preview-head wolf"></div>
+                            <div class="preview-body wolf"></div>
+                        </div>
+                        <div class="char-btn-name">Lobo</div>
+                        <div class="char-keys">
+                            <kbd>A</kbd>
+                            <kbd>←</kbd>
+                        </div>
+                    </button>
+                    <button class="char-btn" data-char="witch" data-player="0">
+                        <div class="char-preview">
+                            <div class="preview-head witch"></div>
+                            <div class="preview-body witch"></div>
+                        </div>
+                        <div class="char-btn-name">Bruxa</div>
+                        <div class="char-keys">
+                            <kbd>S</kbd>
+                            <kbd>↓</kbd>
+                        </div>
+                    </button>
+                    <button class="char-btn" data-char="princess" data-player="0">
+                        <div class="char-preview">
+                            <div class="preview-head princess"></div>
+                            <div class="preview-body princess"></div>
+                        </div>
+                        <div class="char-btn-name">Princesa</div>
+                        <div class="char-keys">
+                            <kbd>D</kbd>
+                            <kbd>→</kbd>
+                        </div>
+                    </button>
+                    <button class="char-btn" data-char="peasant" data-player="0">
+                        <div class="char-preview">
+                            <div class="preview-head peasant"></div>
+                            <div class="preview-body peasant"></div>
+                        </div>
+                        <div class="char-btn-name">Camponês</div>
+                        <div class="char-keys">
+                            <kbd>Espaço</kbd>
+                            <kbd>Enter</kbd>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Feedback Message -->
+            <div class="feedback" id="feedback"></div>
+
+            <!-- Back to Menu Button -->
+            <button class="back-btn" id="backBtn">Voltar ao Menu</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="controls.js"></script>
+    <script src="scoring.js"></script>
+</body>
+
+</html>
